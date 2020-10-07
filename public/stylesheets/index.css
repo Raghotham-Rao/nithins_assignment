@@ -42,3 +42,7 @@ footer{
 .add-bottom-margin{
     margin-bottom: 30px;
 }
+
+.thumbnail>a>img{
+    min-height: 168.33px;
+}
