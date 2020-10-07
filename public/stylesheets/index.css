@@ -47,6 +47,11 @@ footer{
     min-height: 168.33px;
 }
 
+.thumbnail>a{
+    color: initial;
+    text-decoration: none;
+}
+
 .thumbnail:hover{
     box-shadow: 0px 0px 4px darkgray;
 }
