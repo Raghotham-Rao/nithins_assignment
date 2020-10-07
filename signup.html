@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment</title>
+    <title>Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -29,12 +29,35 @@
         </div>
     </nav>
 
-    <div id="banner_image">
-        <div class="container">
-            <div id="banner_content">
-                <a href="./products.html" class="btn btn-danger btn-lg active">Shop Now</a>
+    <div class="col-sm-4 col-sm-offset-4">
+        <form action="" method="post" id="signup_form">
+            <h2 class="text-center">SIGN UP</h2>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Name">
             </div>
-        </div>
+
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email">
+            </div>
+
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Contact" pattern="[6-9][0-9]{9}">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="City">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Addresses">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
 
     <footer>
@@ -44,6 +67,5 @@
             </center>
         </div>
     </footer>
-
 </body>
 </html>
