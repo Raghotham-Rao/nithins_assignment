@@ -1,3 +1,13 @@
+<?php
+    require './includes/common.php';
+?>
+
+<?php
+    if(!isset($_SESSION['email'])){
+        header('location: index.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,31 +20,21 @@
     <link rel="stylesheet" href="./public/stylesheets/index.css">
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarOptions">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="./index.html" class="navbar-brand">Lifestyle Store</a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="navbarOptions">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="./cart.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-                <li><a href="./settings.html"><span class="glyphicon glyphicon-user"></span> Settings</a></li>
-                <li><a href="./login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li><a></a></li>
-            </ul>
-        </div>
-    </nav>
+    <?php
+        include './includes/navbar.php';
+    ?>
 
     <div class="container add-top-margin add-bottom-margin">
         <div class="jumbotron">
             <h1> Welcome to our Lifestyle Store! </h1>
             <p>We have  the best cameras, watches and shirts for you. No need to hunt around, we have all in onle place.</p>
         </div>
+
+        <?php
+            $query = "select * from products";
+
+            $res = mysqli_query($conn, $query);
+        ?>
 
         <div class="row text-center">
             <div class="col-md-3 col-sm-6">
@@ -199,13 +199,9 @@
         </div>
     </div>    
 
-    <footer>
-        <div class="container">
-            <center>
-                Copyright © Lifestyle Store. All Rights Reserved | Contact Us: +91 90000 00000
-            </center>
-        </div>
-    </footer>
+    <?php
+        include './includes/footer.php';
+    ?>
 
 </body>
 </html>
