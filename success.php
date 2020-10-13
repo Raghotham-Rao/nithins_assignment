@@ -1,3 +1,18 @@
+<?php
+    require './includes/common.php';
+
+    if(!isset($_SESSION['email'])){
+        header('index.php');
+    }
+    else{
+        $query = "update users_items set status = 'Confirmed' where user_id = {$_SESSION['id']}";
+
+        if(!mysqli_query($conn, $query)){
+            echo "Couldn't Confirm order";
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +31,7 @@
             <div class="col-sm-8 col-sm-offset-2">
                 <div class="jumbotron bg-success text-center">
                     <h1 class="display-3 text-center">Thank you for shopping!</h1>
-                    <a href="./products.html"> Click here </a> <span>to purchase any other item.</span> 
+                    <a href="./products.php"> Click here </a> <span>to purchase any other item.</span> 
                 </div>
             </div>
         </div>

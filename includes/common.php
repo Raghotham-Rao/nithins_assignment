@@ -10,7 +10,7 @@
         echo "connection failed";
     }
 
-    session_start();
-
-    // $_SESSION['email'] = 'nithinskanda@yahoo.in';
+    if(!isset($_SESSION['email'])){
+        session_start();
+    }
 ?>

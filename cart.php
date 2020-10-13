@@ -22,7 +22,7 @@
     <div class="container-fluid add-top-margin">
         <div class="row">
 
-            <div class="col-sm-4 col-sm-offset-4">
+            <div class="col-sm-6 col-sm-offset-3">
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -34,28 +34,35 @@
                     </thead>
                     <tbody>
                         <?php 
-                            $query = "select items.name,items.price from users_items inner join items where items.id = users_items.item_id and user_id=$_SESSION[id]";
+                            $query = "select items.id, items.name,items.price from users_items inner join items where items.id = users_items.item_id and user_id=$_SESSION[id] and users_items.status = 'Added to cart'";
 
                             $res = mysqli_query($conn, $query);
                             $count = 1;
+                            $total = 0;
 
-                            while($row = mysqli_fetch_array($res)){ ?>
+                            while($row = mysqli_fetch_array($res)){ 
+                                $total += $row[2]?>
                                 <tr>
-                                    <td> <?php echo $count++; ?> </td>
-                                    <td> <?php echo $row[0]; ?> </td>
-                                    <td> <?php echo $row[1]; ?> </td>
-                                    <td></td>
+                                    <td class="text-center"> <?php echo $count++; ?> </td>
+                                    <td> Rs. <?php echo $row[1]; ?> </td>
+                                    <td> Rs. <?php echo $row[2]; ?> </td>
+                                    <td> <a href='<?php echo "cart-remove.php?id=$row[0]" ?>'> Remove </a></td>
                                 </tr>
                         <?php } ?>
                         <tr>
                             <td></td>
                             <td>Total</td>
-                            <td>Rs 0/-</td>
-                            <td><a href="./success.html" class="btn btn-primary">Confirm Order</a></td>
+                            <td> Rs. <?php echo $total; ?></td>
+                            <td class="text-center"><a href="./success.php" class="btn btn-primary">Confirm Order</a></td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="4"> <a class="btn btn-primary btn-block" href="products.php"> Shop More </a> </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            
             </div>
 
         </div>

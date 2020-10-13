@@ -1,3 +1,11 @@
+<?php
+    require('./includes/common.php');
+
+    if(!isset($_SESSION['email'])){
+        header('location: index.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,40 +18,33 @@
     <link rel="stylesheet" href="./public/stylesheets/index.css">
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarOptions">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="./index.html" class="navbar-brand">Lifestyle Store</a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="navbarOptions">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="./cart.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-                <li><a href="./signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="./login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li><a></a></li>
-            </ul>
-        </div>
-    </nav>
+    <?php
+        include './includes/navbar.php';
+    ?>
 
     <div class="col-sm-4 col-sm-offset-4">
-        <form action="" method="post" id="signup_form">
+        <form action="settings_script.php" method="post" id="signup_form">
             <h2 class="text-center">Change Password</h2>
 
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="Old Password">
+                <input type="password" name="old_pass" class="form-control" placeholder="Old Password">
+                <?php if(isset($_GET['err']) and $_GET['err'] == 'wrong_old_password') {?>
+                    <p class="text-danger"> * Type in the correct old password </p>
+                <?php } ?>
             </div>
 
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="New Password">
+                <input type="password" name="new_pass" class="form-control" placeholder="New Password">
+                <?php if(isset($_GET['err']) and $_GET['err'] == 'mismatched_passwords') {?>
+                    <p class="text-danger">*new passwords must match </p>
+                <?php } ?>
             </div>
 
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="Re-type New Password">
+                <input type="password" name="confirm_pass" class="form-control" placeholder="Re-type New Password">
+                <?php if(isset($_GET['err']) and $_GET['err'] == 'mismatched_passwords') {?>
+                    <p class="text-danger">*new passwords must match </p>
+                <?php } ?>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -51,13 +52,9 @@
     </div>
 
 
-    <footer>
-        <div class="container">
-            <center>
-                Copyright © Lifestyle Store. All Rights Reserved | Contact Us: +91 90000 00000
-            </center>
-        </div>
-    </footer>
+    <?php
+        include './includes/footer.php';
+    ?>
 
 </body>
 </html>

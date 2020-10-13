@@ -12,5 +12,8 @@
 	if($res){
 		header("location: cart.php");
 	}
+	else{
+		echo mysqli_error($conn);
+	}
 
 ?>

@@ -5,7 +5,7 @@
 
 <?php
     if(!isset($_SESSION['email'])){
-        header('location: index.php');
+        header('location: login.php');
     }
 ?>
 
@@ -44,13 +44,20 @@
 
                         <div class="col-md-3 col-sm-6">
                             <div class="thumbnail">
-                                <a href="">
+                                <a href="" class="no_underline">
                                     <?php $row = mysqli_fetch_assoc($res); ?>
                                     <img src = '<?php echo $row["img_src"]; ?>' >
                                     <div class="caption">
                                         <h2> <?php echo $row["name"]; ?> </h2>
                                         <p> Price: Rs.<?php echo $row["price"]; ?> </p>
-                                        <a class="btn btn-primary btn-block" href='<?php echo "cart-add.php?item_id=" . $row["id"]; ?>'>Add to Cart</a>
+                                        <?php
+                                        $added = check_if_added_to_cart($row["id"]);
+                                        if(!$added) { ?>
+                                            <a class="btn btn-primary btn-block" href='<?php echo "cart-add.php?item_id=" . $row["id"]; ?>'>Add to Cart</a>
+                                        <?php } 
+                                        else{?>
+                                            <button class="btn btn-secondary btn-block" disabled="disabled"><?php echo $added; ?></button>
+                                        <?php } ?>
                                     </div>
                                 </a>
                             </div>            
