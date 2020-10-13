@@ -31,173 +31,35 @@
         </div>
 
         <?php
-            $query = "select * from products";
+            $query = "select * from items";
 
             $res = mysqli_query($conn, $query);
-        ?>
 
-        <div class="row text-center">
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <a href="">
-                        <img src="./public/images/5.jpg" alt="" srcset="">
-                        <div class="caption">
-                            <h2>Product Name</h2>
-                            <p>Product Price</p>
-                            <button type="submit" class="btn btn-primary btn-block">Add to cart</button>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            for($i = 0;$i < mysqli_num_rows($res); $i+=4){ ?>
 
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <a href="">
-                        <img src="./public/images/2.jpg" alt="" srcset="">
-                        <div class="caption">
-                            <h2>Product Name</h2>
-                            <p>Product Price</p>
-                            <button type="submit" class="btn btn-primary btn-block">Add to cart</button>
-                        </div>
-                    </a>
-                </div>
-            </div>
+                <div class="row text-center">
 
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <a href="">
-                        <img src="./public/images/3.jpg" alt="" srcset="">
-                        <div class="caption">
-                            <h2>Product Name</h2>
-                            <p>Product Price</p>
-                            <button type="submit" class="btn btn-primary btn-block">Add to cart</button>
-                        </div>
-                    </a>
-                </div>
-            </div>
+                <?php for ($j=0; $j < 4; $j++) { ?> 
 
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <a href="">
-                        <img src="./public/images/4.jpg" alt="" srcset="">
-                        <div class="caption">
-                            <h2>Product Name</h2>
-                            <p>Product Price</p>
-                            <button type="submit" class="btn btn-primary btn-block">Add to cart</button>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="thumbnail">
+                                <a href="">
+                                    <?php $row = mysqli_fetch_assoc($res); ?>
+                                    <img src = '<?php echo $row["img_src"]; ?>' >
+                                    <div class="caption">
+                                        <h2> <?php echo $row["name"]; ?> </h2>
+                                        <p> Price: Rs.<?php echo $row["price"]; ?> </p>
+                                        <button type="submit" class="btn btn-primary btn-block">Add to Cart</button>
+                                    </div>
+                                </a>
+                            </div>            
                         </div>
-                    </a>
+
+                <?php } ?>
+
                 </div>
-            </div>
+            <?php } ?>
         </div>
-
-        <div class="row text-center">
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <a href="">
-                        <img src="./public/images/9.jpg" alt="" srcset="">
-                        <div class="caption">
-                            <h2>Product Name</h2>
-                            <p>Product Price</p>
-                            <button type="submit" class="btn btn-primary btn-block">Add to cart</button>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <a href="">
-                        <img src="./public/images/10.jpg" alt="" srcset="">
-                        <div class="caption">
-                            <h2>Product Name</h2>
-                            <p>Product Price</p>
-                            <button type="submit" class="btn btn-primary btn-block">Add to cart</button>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <a href="">
-                        <img src="./public/images/11.jpg" alt="" srcset="">
-                        <div class="caption">
-                            <h2>Product Name</h2>
-                            <p>Product Price</p>
-                            <button type="submit" class="btn btn-primary btn-block">Add to cart</button>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <a href="">
-                        <img src="./public/images/12.jpg" alt="" srcset="">
-                        <div class="caption">
-                            <h2>Product Name</h2>
-                            <p>Product Price</p>
-                            <button type="submit" class="btn btn-primary btn-block">Add to cart</button>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="row text-center">
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <a href="">
-                        <img src="./public/images/8.jpg" alt="" srcset="">
-                        <div class="caption">
-                            <h2>Product Name</h2>
-                            <p>Product Price</p>
-                            <button type="submit" class="btn btn-primary btn-block">Add to cart</button>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <a href="">
-                        <img src="./public/images/6.jpg" alt="" srcset="">
-                        <div class="caption">
-                            <h2>Product Name</h2>
-                            <p>Product Price</p>
-                            <button type="submit" class="btn btn-primary btn-block">Add to cart</button>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <a href="">
-                        <img src="./public/images/13.jpg" alt="" srcset="">
-                        <div class="caption">
-                            <h2>Product Name</h2>
-                            <p>Product Price</p>
-                            <button type="submit" class="btn btn-primary btn-block">Add to cart</button>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <a href="">
-                        <img src="./public/images/14.jpg" alt="" srcset="">
-                        <div class="caption">
-                            <h2>Product Name</h2>
-                            <p>Product Price</p>
-                            <button type="submit" class="btn btn-primary btn-block">Add to cart</button>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>    
 
     <?php
         include './includes/footer.php';
