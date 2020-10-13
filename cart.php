@@ -1,3 +1,8 @@
+<?php 
+    require './includes/common.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,25 +15,9 @@
     <link rel="stylesheet" href="./public/stylesheets/index.css">
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarOptions">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="./index.html" class="navbar-brand">Lifestyle Store</a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="navbarOptions">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="./cart.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-                <li><a href="./settings.html"><span class="glyphicon glyphicon-user"></span> Settings</a></li>
-                <li><a href="./login.html"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-                <li><a></a></li>
-            </ul>
-        </div>
-    </nav>
+    <?php 
+        include './includes/navbar.php';
+    ?>
 
     <div class="container-fluid add-top-margin">
         <div class="row">
@@ -44,12 +33,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        <?php 
+                            $query = "select items.name,items.price from users_items inner join items where items.id = users_items.item_id and user_id=$_SESSION[id]";
+
+                            $res = mysqli_query($conn, $query);
+                            $count = 1;
+
+                            while($row = mysqli_fetch_array($res)){ ?>
+                                <tr>
+                                    <td> <?php echo $count++; ?> </td>
+                                    <td> <?php echo $row[0]; ?> </td>
+                                    <td> <?php echo $row[1]; ?> </td>
+                                    <td></td>
+                                </tr>
+                        <?php } ?>
                         <tr>
                             <td></td>
                             <td>Total</td>
@@ -63,13 +60,9 @@
 
         </div>
 
-    <footer>
-        <div class="container">
-            <center>
-                Copyright © Lifestyle Store. All Rights Reserved | Contact Us: +91 90000 00000
-            </center>
-        </div>
-    </footer>
+    <?php 
+        include './includes/footer.php';
+    ?>
 
 </body>
 </html>

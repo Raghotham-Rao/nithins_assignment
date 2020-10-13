@@ -76,3 +76,15 @@ footer{
     font-size: 20px;
     font-style: normal;
 }
+
+.caption>*{
+    color: initial;
+}
+
+.caption>*:hover{
+    text-decoration: none;
+}
+
+a.btn.btn-primary{
+    color: whitesmoke;
+}

@@ -1,5 +1,6 @@
 <?php
     require './includes/common.php';
+    include './includes/check_if_added.php';
 ?>
 
 <?php
@@ -49,7 +50,7 @@
                                     <div class="caption">
                                         <h2> <?php echo $row["name"]; ?> </h2>
                                         <p> Price: Rs.<?php echo $row["price"]; ?> </p>
-                                        <button type="submit" class="btn btn-primary btn-block">Add to Cart</button>
+                                        <a class="btn btn-primary btn-block" href='<?php echo "cart-add.php?item_id=" . $row["id"]; ?>'>Add to Cart</a>
                                     </div>
                                 </a>
                             </div>            
